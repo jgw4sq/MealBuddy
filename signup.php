@@ -3,28 +3,43 @@
 
     $aResult = array();
 
-    if( !isset($_POST['functionname']) ) { $aResult['error'] = 'No function name!'; }
+   
 
-    if( !isset($_POST['arguments']) ) { $aResult['error'] = 'No function arguments!'; }
+    if( !isset($_POST['name']) ) { $aResult['error'] = 'No name!'; }
+if( !isset($_POST['email']) ) { $aResult['error'] = 'No email!'; }
+if( !isset($_POST['address']) ) { $aResult['error'] = 'No address!'; }
+if( !isset($_POST['city']) ) { $aResult['error'] = 'No city!'; }
+if( !isset($_POST['state']) ) { $aResult['error'] = 'No state!'; }
+if( !isset($_POST['zip']) ) { $aResult['error'] = 'No zip!';}
 
     if( !isset($aResult['error']) ) {
 
-        switch($_POST['functionname']) {
-            case 'add':
-               if( !is_array($_POST['arguments']) || (count($_POST['arguments']) < 2) ) {
-                   $aResult['error'] = 'Error in arguments!';
-               }
-               else {
-                   $aResult['result'] = add(floatval($_POST['arguments'][0]), floatval($_POST['arguments'][1]));
-               }
-               break;
+     $servername = "localhost";
+     $username = "root";
+     $password = "password";
+     $dbname = "MealBuddy";
 
-            default:
-               $aResult['error'] = 'Not found function '.$_POST['functionname'].'!';
-               break;
-        }
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+$aResult['error'] = 'bad connection';
+   //die("Connection failed: " . $conn->connect_error);
 
-    }
+} else{
+
+
+$sql = "INSERT INTO customers (name,email,address,city,state,zip)
+VALUES ('{$_POST['name']}','{$_POST['email']}','{$_POST['address']}','{$_POST['city']}','{$_POST['state']}','{$_POST['zip']}')";
+
+if ($conn->query($sql) === TRUE) {
+  $aResult['connection'] = 'good sql';
+} else {
+  $aResult['error'] = 'bad sql';
+}}
+
+$conn->close();
+}
 
     echo json_encode($aResult);
 

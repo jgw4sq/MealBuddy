@@ -13,6 +13,8 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
 <script type="text/javascript" src="inputvalidation.js"></script>
 	<body class="homepage">
 		<div id="page-wrapper">
@@ -100,7 +102,7 @@ width: 50%;">
 												<div class="12u">
 													<ul class="actions">
 														<li><input id="submitButton" type="submit" class="style1" value="Sign Up" style="background:black;margin-left:100%;" onclick="checkFields();"/></li>
-														<li><input type="reset" class="style2" value="Reset" style="background:white;margin-left:100%;margin-right:25%;" /></li>
+														<li><input onclick="checkFields();" type="reset" class="style2" value="Reset" style="background:white;margin-left:100%;margin-right:25%;" /></li>
 													</ul>
 												</div>
 											</div>
