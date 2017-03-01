@@ -10,28 +10,38 @@ var state =document.getElementById("contact-state");
 var zip =document.getElementById("contact-zip");
 var errorMessage ="";
 
-if(name.value ===""||name.value.length === 0){
+//TEXT ONLY
+var textRE = /^[a-zA-Z ]*$/
+if(name.value ===""||name.value.length === 0||textRE.exec(name.value)==null){
 	errorMessage+= "You must enter your name.\n";
-
 }
-if(email.value ===""||email.value.length === 0){
-	errorMessage+= "You must enter your email.\n";
 
+//text or numbers before @, '.' after @
+var emailRE = /\S+@\S+\.\S+/
+if(email.value ===""||email.value.length === 0||emailRE.exec(email.value)==null){
+	errorMessage+= "You must enter a valid email.\n";
 }
-if(address.value.length === 0){
 
+var addRE = /\d+\s+\w+\s+\w+/
+if(address.value.length === 0||address.value.length===0||addRE.exec(address.value)==null){
 	errorMessage+= "You must enter your address.\n";
-
 }
-if(city.value ===""||city.value.length === 0){
+
+//TEXT ONLY
+if(city.value ===""||city.value.length === 0||textRE.exec(city.value)==null){
 	errorMessage+= "You must enter your city.\n";
 }
-if(state.value ===""||state.value.length === 0){
+
+//list of valid states
+var stateRE = /^(?:(A[KLRZ]|C[AOT]|D[CE]|FL|GA|HI|I[ADLN]|K[SY]|LA|M[ADEINOST]|N[CDEHJMVY]|O[HKR]|P[AR]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]))$/i;
+if(state.value ===""||state.value.length === 0||stateRE.exec(state.value)==null){
 	errorMessage+= "You must enter your state.\n";
 }
-if(zip.value ===""||zip.value.length === 0){
-	errorMessage+= "You must enter your zip.\n";
 
+//five digit number
+var zipRE = /^[0-9]{5}$/
+if(zip.value ===""||zip.value.length === 0||zipRE.exec(zip.value)==null){
+	errorMessage+= "You must enter your zip.\n";
 }
 
 if(errorMessage.length===0){

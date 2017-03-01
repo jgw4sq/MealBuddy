@@ -28,19 +28,35 @@ $aResult['error'] = 'bad connection';
 
 } else{
 
+$users = "SELECT* from customers where email = '{$_POST['email']}' ";
+$result = $conn->query($users);
 
-$sql = "INSERT INTO customers (name,email,address,city,state,zip)
+
+if($result->num_rows==0) {
+$sql = "INSERT INTO customers (name, email,address,city,state,zip)
 VALUES ('{$_POST['name']}','{$_POST['email']}','{$_POST['address']}','{$_POST['city']}','{$_POST['state']}','{$_POST['zip']}')";
 
 if ($conn->query($sql) === TRUE) {
   $aResult['connection'] = 'good sql';
 } else {
-  $aResult['error'] = 'bad sql';
-}}
-
-$conn->close();
+  $aResult['error'] = 'bad sql ';
+}}else{
+  $aResult['error'] = 'That User Already exists ';
 }
 
+$conn->close();
+}}
+
     echo json_encode($aResult);
+
+ 
+
+
+
+
+
+
+
+
 
 ?>
