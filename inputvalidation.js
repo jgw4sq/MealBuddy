@@ -9,6 +9,7 @@ var city =document.getElementById("contact-city");
 var state =document.getElementById("contact-state");
 var zip =document.getElementById("contact-zip");
 var phone =document.getElementById("contact-phone");
+var buyer = document.getElementById("action");
 var errorMessage ="";
 
 //TEXT ONLY
@@ -50,13 +51,20 @@ if(phone.value ===""||phone.value.length === 0||phoneRE.exec(phone.value)==null)
 	errorMessage+= "You must enter a valid phone number in the form: xxx-xxx-xxxx.\n";
 }
 
+var buyerStr = buyer.options[buyer.selectedIndex].text;
+if(buyerStr==="Do you plan on buying or selling more?"){
+errorMessage+= "You must select your buyer/seller preference.\n";
+}
+var isBuyer = parseInt(buyer.options[buyer.selectedIndex].value);
+
 
 if(errorMessage.length===0){
+
 jQuery.ajax({
     type: "POST",
     url: 'signup.php',
     dataType: 'json',
-    data: {name: name.value, email: email.value, address: address.value, city: city.value, state: state.value, zip: zip.value,phone: phone.value},
+    data: {name: name.value, email: email.value, address: address.value, city: city.value, state: state.value, zip: zip.value,phone: phone.value, buyer: isBuyer},
 
     success: function (obj, textstatus) {
                   if( !('error' in obj) ) {
@@ -66,7 +74,8 @@ alert("success");
 return true;
                   }
                   else {
-                      alert(obj.error);
+			
+                      alert("That email is already registered");
 			return false;
                   }
             }
