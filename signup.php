@@ -11,6 +11,7 @@ if( !isset($_POST['address']) ) { $aResult['error'] = 'No address!'; }
 if( !isset($_POST['city']) ) { $aResult['error'] = 'No city!'; }
 if( !isset($_POST['state']) ) { $aResult['error'] = 'No state!'; }
 if( !isset($_POST['zip']) ) { $aResult['error'] = 'No zip!';}
+if( !isset($_POST['phone']) ) { $aResult['error'] = 'No phone!';}
 
     if( !isset($aResult['error']) ) {
 
@@ -33,8 +34,8 @@ $result = $conn->query($users);
 
 
 if($result->num_rows==0) {
-$sql = "INSERT INTO customers (name, email,address,city,state,zip)
-VALUES ('{$_POST['name']}','{$_POST['email']}','{$_POST['address']}','{$_POST['city']}','{$_POST['state']}','{$_POST['zip']}')";
+$sql = "INSERT INTO customers (name, email,address,city,state,zip,phone)
+VALUES ('{$_POST['name']}','{$_POST['email']}','{$_POST['address']}','{$_POST['city']}','{$_POST['state']}','{$_POST['zip']}','{$_POST['phone']}')";
 
 if ($conn->query($sql) === TRUE) {
   $aResult['connection'] = 'good sql';
