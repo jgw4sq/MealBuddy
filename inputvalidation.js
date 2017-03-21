@@ -19,6 +19,7 @@ if(name.value ===""||name.value.length === 0||textRE.exec(name.value)==null){
 }
 
 //text or numbers before @, '.' after @
+//html email input
 var emailRE = /\S+@\S+\.\S+/
 if(email.value ===""||email.value.length === 0||emailRE.exec(email.value)==null){
 	errorMessage+= "You must enter a valid email.\n";
@@ -67,15 +68,17 @@ jQuery.ajax({
     data: {name: name.value, email: email.value, address: address.value, city: city.value, state: state.value, zip: zip.value,phone: phone.value, buyer: isBuyer},
 
     success: function (obj, textstatus) {
-                  if( !('error' in obj) ) {
-                      yourVariable = obj.connection;
+                  if(!('error' in obj) ) {
+                    alert("hello");
+                      yourVariable = obj.success;
 alert(yourVariable);
 alert("success");
 return true;
                   }
                   else {
-			
-                      alert("That email is already registered");
+			                    alert("hello2");
+
+                      alert(obj.error);
 			return false;
                   }
             }
