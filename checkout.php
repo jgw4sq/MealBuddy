@@ -66,7 +66,9 @@
 											
 										</ul>
 									</li>
-									<li><a href="#">Sign Up</a></li>
+									 <li><a href="checkout.php">Place Order</a></li>
+
+                                    <li><a href="signup.html">Sign Up</a></li>
 									
 								</ul>
 							</nav>

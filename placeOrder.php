@@ -70,7 +70,9 @@
                                             
                                         </ul>
                                     </li>
-                                    <li><a href="#">Sign Up</a></li>
+                                     <li><a href="checkout.php">Place Order</a></li>
+
+                                    <li><a href="signup.html">Sign Up</a></li>
                                     
                                 </ul>
                             </nav>
@@ -97,6 +99,8 @@
             <?php echo ($_SESSION['meetingLocation'])?>
 <br><h3>Order Notes:</h3>
 <?php echo ($_SESSION['orderDetails'])?><br>
+<h3>Total Cost:</h3>
+<?php echo ($_SESSION['cost']);?><br>
             <form action="pay.php" method="POST">
                 <input type="hidden" name="csrf" value="<?php echo($_SESSION['csrf']);?>" hidden readonly/>
                 <!--<label>Shipping methods:</label>-->

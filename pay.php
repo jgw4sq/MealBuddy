@@ -108,7 +108,9 @@
                                             
                                         </ul>
                                     </li>
-                                    <li><a href="#">Sign Up</a></li>
+                                                                        <li><a href="checkout.php">Place Order</a></li>
+
+                                    <li><a href="signup.html">Sign Up</a></li>
                                     
                                 </ul>
                             </nav>
@@ -120,7 +122,7 @@
                 <div id="intro-wrapper" class="wrapper style1">
                     <div class="title">Confirmation</div>
     <div class="row" >
-        <div class="col-md-4" style="margin-left:25%;width:100%;">
+        <div class="col-md-4" style="width:100%;">
            <center> <h4>
                 <?php echo($payerFirstName.' '.$payerLastName.', Thank you for your Order!');?><br/><br/>
                 <!--Shipping Address: </h4>
@@ -139,7 +141,7 @@
                 <h4>Meeting Location: </h4> <?php echo($_SESSION['meetingLocation']);?> <br>
                 <h4>Order Notes: </h4> <?php echo($_SESSION['orderDetails']);?> <br>
                 <br/>
-            Return to <a href="index.php">home page</a>.
+            Return to <a href="index.html">home page</a>.
             </center>
 
             
@@ -165,6 +167,7 @@ $mail->addAddress('jgw4sq@virginia.edu', 'Meal Buddy');     // Add a recipient
     // Optional name
 $mail->isHTML(true);                                  // Set email format to HTML
 $cost=  $_SESSION['cost'];
+$orderDetails = $_SESSION['orderDetails'];
 $meetingLocation = $_SESSION['meetingLocation'];
 $mail->Subject = 'Purchase Confirmation';
 $mail->Body    = '<head>
@@ -186,11 +189,11 @@ $mail->Body    = '<head>
     </div>
     <center><h2><b><p>Your Order</p></b></h2></center>
     <div class="row 50%" style="text-align:center;margin-left:35%;width:50%;">
-        <p>Order: <br>
-        Meeting location:'. $meetingLocation . '<br>
+        <p>Order: '. $orderDetails . '<br>
+        Meeting location: '. $meetingLocation . '<br>
         Total:'. $cost . '<br></p>
 </div>
-<p><b><h2><center>Bon appetit!<center></h2>></b></p>
+<p><b><h2><center>Bon appetit!<center></h2></b></p>
 </body>';
 $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
