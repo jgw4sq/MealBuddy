@@ -83,10 +83,12 @@
 									<center><b>Meal Selection</b><br>	<input checked="checked" onchange= "selectChange(this)" type="radio" id="meal" name="meal" value="3.99" > Pavillion Meal Exchange (3.99)  <br>
   <input onchange= "selectChange(this)" type="radio" id="meal" name="meal" value="4.99"> Newcomb To-Go Meal (4.99) <br>
   <input onchange= "selectChange(this)" type="radio" id="meal" name="meal" value="5.99"> N2Go Box (5.99) <br>
-  <center><b>Your order (ex. Chick-Fil-A Sandwich Meal, Sprite, BBQ Sauce): </b></center>
-  <input type="text" name="orderNotes" style="text-align:center;margin-left:3%;width:50%;z-index: 1;"/><br>
+  
+  <input type="hidden" name="orderNotes" style="text-align:center;margin-left:3%;width:50%;"/><br>
   <center><b>Meeting Location: </b></center>
-  							<input type="text" name="meetingLocation" style="text-align:center;margin-left:3%;width:50%;z-index: 1;"/><input type="text"/>
+  							<input type="text" name="meetingLocation" style="text-align:center;margin-left:3%;width:50%;"/><input style="width:0%;height:0%;"type="hidden"/><br>
+  							<center><b>Your order (ex. Chick-Fil-A Sandwich Meal, Sprite, BBQ Sauce): </b></center>
+  <input type="text" name="orderDetails"style="text-align:center;margin-left:3%;width:50%;">
 <div id="buttonContainer" class="row" style=" text-align:center;margin-left: 40%; margin-right:25%; width:50%;">
 												<div class="12u">
 												

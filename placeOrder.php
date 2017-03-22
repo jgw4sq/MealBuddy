@@ -84,21 +84,23 @@
     <div class="row" >
         <div class="col-md-4" style="text-align:center;margin-left:-25%;width:60%;"></div>
         <div class="col-md-4" style="text-align:center;margin-left:-15%;width:60%;" >
-            <h3>Ship To :</h3>
+            <h3>Deliver to :</h3>
             <?php echo($recipientName);?><br/>
-            <?php echo($addressLine1);?><br/>
+           <!-- <?php echo($addressLine1);?><br/>
             <?php echo($addressLine2);?><br/>
             <?php echo($city);?><br/>
             <?php echo($state.'-'.$postalCode);?><br/>
             <?php echo($countryCode);?>
-            <?php echo ($_SESSION['oderNotes'])?>;
-
-            <?php echo ($_SESSION['meetingLocation'])?>;
-
+            
+        -->
+        <h3>Location:</h3>
+            <?php echo ($_SESSION['meetingLocation'])?>
+<br><h3>Order Notes:</h3>
+<?php echo ($_SESSION['orderDetails'])?><br>
             <form action="pay.php" method="POST">
                 <input type="hidden" name="csrf" value="<?php echo($_SESSION['csrf']);?>" hidden readonly/>
-                <label>Shipping methods:</label>
-                <select class="form-control" name="shipping_method" id="shipping_method" style="text-align:center; margin-left:37%;width: 250px;" class="required-entry">
+                <!--<label>Shipping methods:</label>-->
+                <select class="form-control" name="shipping_method" id="shipping_method" style="visibility:hidden;text-align:center; margin-left:37%;width: 250px;" class="required-entry">
                    
                     <optgroup label="Free Delivery" style="font-style:normal;">
                         <option value="0.00" selected>

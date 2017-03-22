@@ -120,28 +120,31 @@
                 <div id="intro-wrapper" class="wrapper style1">
                     <div class="title">Confirmation</div>
     <div class="row" >
-    <div class="row">
-        <div class="col-md-4" style="text-align:center;margin-left:-25%;width:60%;"></div>
-        <div class="col-md-4" style="text-align:center;margin-left:55%;width:100%;">
-            <h4>
+        <div class="col-md-4" style="margin-left:25%;width:100%;">
+           <center> <h4>
                 <?php echo($payerFirstName.' '.$payerLastName.', Thank you for your Order!');?><br/><br/>
-                Shipping Address: </h4>
+                <!--Shipping Address: </h4>
                 <?php echo($recipientName);?><br/>
                 <?php echo($addressLine1);?><br/>
                 <?php echo($addressLine2);?><br/>
                 <?php echo($city);?><br/>
                 <?php echo($state.'-'.$postalCode);?><br/>
                 <?php echo($countryCode);?>
+-->
+                <h4>Payment ID: </h4> <?php echo($paymentID);?> <br/>
+		<h4>Transaction ID : </h4> <?php echo($transactionID);?> <br/>
+                <!--State : <?php echo($paymentState);?> <br/>-->
 
-                <h4>Payment ID: <?php echo($paymentID);?> <br/>
-		Transaction ID : <?php echo($transactionID);?> <br/>
-                State : <?php echo($paymentState);?> <br/>
-                Total Amount: <?php echo($finalAmount);?> &nbsp;  <?php echo($currency);?> <br/>
-            </h4>
-            <br/>
+                <h4>Total Amount: </h4> <?php echo($finalAmount);?> &nbsp;  <?php echo($currency);?> <br/>
+                <h4>Meeting Location: </h4> <?php echo($_SESSION['meetingLocation']);?> <br>
+                <h4>Order Notes: </h4> <?php echo($_SESSION['orderDetails']);?> <br>
+                <br/>
             Return to <a href="index.php">home page</a>.
+            </center>
+
+            
         </div>
-        <div class="col-md-4"></div>
+        
     </div>
       <?php
   require 'PHPMailerAutoload.php';
@@ -157,8 +160,8 @@ $mail->Username = 'john.weber1995@gmail.com';                 // SMTP username
 $mail->Password = 'maryjane1290';                           // SMTP password
 $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 587;                                    // TCP port to connect to
-$mail->setFrom('john.weber1995@gmail.com', 'Mailer');
-$mail->addAddress('jgw4sq@virginia.edu', 'Joe User');     // Add a recipient
+$mail->setFrom('john.weber1995@gmail.com', 'Meal Buddy');
+$mail->addAddress('jgw4sq@virginia.edu', 'Meal Buddy');     // Add a recipient
     // Optional name
 $mail->isHTML(true);                                  // Set email format to HTML
 $cost=  $_SESSION['cost'];
@@ -192,11 +195,11 @@ $mail->Body    = '<head>
 $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 if(!$mail->send()) {
-        echo "Mailer Error: " . $mail->ErrorInfo;
+        //echo "Mailer Error: " . $mail->ErrorInfo;
 
 
 } else {
-     echo "Message sent!";
+     //echo "Message sent!";
 
 }
 ?>

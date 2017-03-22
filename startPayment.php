@@ -41,7 +41,7 @@
                        // $expressCheckoutArray['transactions'][0]['amount']['total'] = (float)$_POST['meal'];
                      
                         $expressCheckoutArray['transactions'][0]['amount']['currency'] = $_POST['currencyCodeType'];
-                        $_SESSION['orderNotes']= $_POST['orderNotes'];
+                        $_SESSION['orderDetails']= $_POST['orderDetails'];
                         $_SESSION['meetingLocation'] = $_POST['meetingLocation'];
                         $_SESSION['cost']= $_POST['camera_amount'];
                         $_SESSION['expressCheckoutPaymentData'] = json_encode($expressCheckoutArray);
